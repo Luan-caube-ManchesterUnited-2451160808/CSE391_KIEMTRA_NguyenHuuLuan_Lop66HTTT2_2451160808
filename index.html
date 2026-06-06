@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Phiếu Mượn Sách</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hệ Thống Quản Lý Phiếu Mượn Sách</h1>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3>Tổng số phiếu mượn</h3>
+          <p id="totalBorrows">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Số phiếu đang mượn</h3>
+          <p id="borrowingCount">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Số phiếu đã trả</h3>
+          <p id="returnedCount">0</p>
+        </div>
+      </div>
+
+      <div class="actions-bar">
+        <h2>Danh sách phiếu mượn</h2>
+        <button class="btn btn-primary" onclick="openModal()">
+          Thêm phiếu mượn
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Mã Phiếu</th>
+              <th>Người Mượn</th>
+              <th>Mã Sách</th>
+              <th>Thể Loại</th>
+              <th>Ngày Mượn</th>
+              <th>Hạn Trả</th>
+              <th>Trạng Thái</th>
+              <th>Thao Tác</th>
+            </tr>
+          </thead>
+          <tbody id="borrowTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal" id="borrowModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Phiếu Mượn Sách</h2>
+          <button type="button" class="close-btn" onclick="closeModal()">
+            &times;
+          </button>
+        </div>
+
+        <form id="borrowForm" novalidate>
+          <input type="hidden" id="editIndex" value="-1" />
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Mã phiếu mượn (*)</label>
+              <input type="text" id="borrowId" placeholder="Ví dụ: PM-2048" />
+              <div class="error-msg" id="err-borrowId"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Họ tên người mượn </label>
+              <input
+                type="text"
+                id="borrowerName"
+                placeholder="Từ 2 - 40 ký tự"
+              />
+              <div class="error-msg" id="err-borrowerName"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Mã sách (*)</label>
+              <input type="text" id="bookId" placeholder="Ví dụ: BK10234" />
+              <div class="error-msg" id="err-bookId"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Thể loại sách (*)</label>
+              <select id="bookCategory">
+                <option value="">-- Chọn thể loại --</option>
+                <option value="CNTT">CNTT</option>
+                <option value="Kinh tế">Kinh tế</option>
+                <option value="Ngoại ngữ">Ngoại ngữ</option>
+                <option value="Kỹ năng">Kỹ năng</option>
+              </select>
+              <div class="error-msg" id="err-bookCategory"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Ngày mượn (*)</label>
+              <input type="date" id="borrowDate" />
+              <div class="error-msg" id="err-borrowDate"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Hạn trả (*)</label>
+              <input type="date" id="returnDate" />
+              <div class="error-msg" id="err-returnDate"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Số điện thoại liên hệ (*)</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                placeholder="Ví dụ: 0912345678"
+              />
+              <div class="error-msg" id="err-phoneNumber"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Email liên hệ (*)</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Ví dụ: nam@library.vn"
+              />
+              <div class="error-msg" id="err-email"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Trạng thái mượn (*)</label>
+              <div class="radio-group">
+                <label
+                  ><input
+                    type="radio"
+                    name="status"
+                    value="Đang mượn"
+                    checked
+                  />
+                  Đang mượn</label
+                >
+                <label
+                  ><input type="radio" name="status" value="Đã trả" /> Đã
+                  trả</label
+                >
+              </div>
+              <div class="error-msg" id="err-status"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Ghi chú</label>
+              <textarea
+                id="notes"
+                rows="3"
+                placeholder="Không quá 120 ký tự"
+              ></textarea>
+              <div class="error-msg" id="err-notes"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeModal()"
+            >
+              Hủy bỏ
+            </button>
+            <button type="submit" class="btn btn-primary">Lưu phiếu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
