@@ -224,7 +224,7 @@ function validateForm() {
     document.getElementById("err-email").innerText =
       "Email không được để trống.";
     isValid = false;
-  } else if (!/^[a-zA-Z0-9._%+-]+@library\.vn$/.test(email)) {
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/.test(email)) {
     document.getElementById("err-email").innerText =
       "Email phải đúng định dạng và có đuôi @library.vn";
     isValid = false;
