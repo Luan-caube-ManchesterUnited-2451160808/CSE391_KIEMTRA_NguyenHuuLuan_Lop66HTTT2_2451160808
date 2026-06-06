@@ -361,3 +361,49 @@ function formatToVietnameseDate(dateStr) {
   var parts = dateStr.split("-");
   return parts[2] + "/" + parts[1] + "/" + parts[0];
 }
+// --- ĐOẠN CODE TỰ ĐỘNG XÓA LỖI KHI NGƯỜI DÙNG NHẬP LẠI DỮ LIỆU ---
+
+// Khi gõ vào ô Mã phiếu mượn
+document.getElementById("borrowId").addEventListener("input", function () {
+  document.getElementById("err-borrowId").innerText = "";
+});
+
+// Khi gõ vào ô Họ tên
+document.getElementById("borrowerName").addEventListener("input", function () {
+  document.getElementById("err-borrowerName").innerText = "";
+});
+
+// Khi gõ vào ô Mã sách
+document.getElementById("bookId").addEventListener("input", function () {
+  document.getElementById("err-bookId").innerText = "";
+});
+
+// Khi chọn lại Thể loại sách
+document.getElementById("bookCategory").addEventListener("change", function () {
+  document.getElementById("err-bookCategory").innerText = "";
+});
+
+// Khi chọn lại Ngày mượn
+document.getElementById("borrowDate").addEventListener("change", function () {
+  document.getElementById("err-borrowDate").innerText = "";
+});
+
+// Khi chọn lại Hạn trả
+document.getElementById("returnDate").addEventListener("change", function () {
+  document.getElementById("err-returnDate").innerText = "";
+});
+
+// Khi gõ vào ô Số điện thoại
+document.getElementById("phoneNumber").addEventListener("input", function () {
+  document.getElementById("err-phoneNumber").innerText = "";
+});
+
+// Khi gõ vào ô Email
+document.getElementById("email").addEventListener("input", function () {
+  document.getElementById("err-email").innerText = "";
+});
+
+// Khi gõ vào ô Ghi chú
+document.getElementById("notes").addEventListener("input", function () {
+  document.getElementById("err-notes").innerText = "";
+});
